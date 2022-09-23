@@ -1,4 +1,4 @@
-import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
+import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dartaholics/Screens/Dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,12 +6,15 @@ import 'package:provider/provider.dart';
 
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
+import 'firebase_options.dart';
 import 'providers/google_sign_in.dart';
 import 'services/auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -29,9 +32,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => Board(),
+          '/': (context) => const VoiceCall(),
           '/login': (context) => Login(),
           '/sign-Up': (context) => SignUp(),
           // '/home': (context) =>
