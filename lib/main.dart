@@ -1,5 +1,4 @@
-
-import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
+import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
       ],
       child:MaterialApp(
       routes: {
-        '/': (context) => const WelcomePage(),
+        '/': (context) => const VoiceCall(),
         '/login':(context) => Login(),
         '/sign-Up':(context) => SignUp(),
         // '/home': (context) =>
