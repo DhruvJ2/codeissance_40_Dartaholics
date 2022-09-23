@@ -1,115 +1,276 @@
+import 'package:codestormhack/pages/Login.dart';
+import 'package:codestormhack/pages/SignUp.dart';
+import 'package:codestormhack/providers/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MaterialApp(home:WelcomeScreen()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class WelcomeScreen extends StatelessWidget {
+    var _sizee;
+  Widget SocialBtnRow(BuildContext context) {
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 28.0),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            SocialBtn(
+                  () => print('Login with twitter'),
+              const AssetImage(
+                'assets/images/twitter.png',
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const SizedBox(
+              width: 30,
+            ),
+            SocialBtn(
+                  () {
+                final provider =
+                Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.googleLogin();
+              },
+              const AssetImage(
+                'assets/images/google.png',
+              ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+   _sizee = MediaQuery.of(context).size;
+
+    return Scaffold(
+        body: StreamBuilder<User?>(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasData) {
+                return Login();
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text('Something went Wrong'),
+                );
+              } else {
+                return SingleChildScrollView(
+                  child: Container(
+                    height: _sizee.height,
+                    width: _sizee.width,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromRGBO(223, 211, 255, 1),
+                          Colors.white,
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: _sizee.height * 0.350,
+                          decoration: const BoxDecoration(
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/background.png'),
+                                  fit: BoxFit.fill)),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                  left: 35,
+                                  width: 75,
+                                  height: 175,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/light-1.png'))),
+                                  )),
+                              Positioned(
+                                  left: 130,
+                                  width: 85,
+                                  height: 130,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/light-2.png'))),
+                                  )),
+                              Positioned(
+                                  right: 40,
+                                  top: 5,
+                                  width: 85,
+                                  height: 150,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/clock.png'))),
+                                  )),
+                            ],
+                          ),
+                        ),
+                        const Center(
+                          child: Text(
+                            "Welcome",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 45,
+                                letterSpacing: 1.2,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'sourceSansPro'),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(43, 10, 43, 28),
+                          child: Text(
+                              "Keep yourself updated with your latest trends",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 2.0,
+                                  fontFamily: 'sourceSansPro')),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(30, 20, 30, 15),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SignUp()),
+                              );
+                            },
+                            child: Container(
+                              height: _sizee.height * 0.075,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                               color:Color.fromRGBO(133, 148, 251, 1),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 2,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'sourceSansPro',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SignInWithText(),
+                        SocialBtnRow(context),
+                        SizedBox(
+                          height: _sizee.height * 0.003,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  Login()),
+                            );
+                          },
+                          child: RichText(
+                            text: const TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Already have an account? ',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' Sign In',
+                                  style: TextStyle(
+                                    color:Color.fromRGBO(133, 148, 251, 1),
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
+            }));
+  }
+}
+
+Widget SignInWithText() {
+  return Column(
+    children: const <Widget>[
+      Text(
+        '- OR -',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w500,
+          fontSize: 13.5,
+          fontFamily: 'sourceSansPro',
+        ),
+      ),
+      SizedBox(height: 14.0),
+      Text(
+        'Sign up with',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'sourceSansPro',
+          fontSize: 18,
+        ),
+      ),
+    ],
+  );
+}
+
+Widget SocialBtn(void Function() _onTap, AssetImage image) {
+  return GestureDetector(
+    onTap: _onTap,
+    child: Container(
+      height: 60.0,
+      width: 80.0,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromRGBO(221, 44, 0, .5),
+            offset: Offset(0, 2),
+            blurRadius: 6.0,
+          ),
+        ],
+        image: DecorationImage(
+          image: image,
+        ),
+      ),
+    ),
+  );
 }
