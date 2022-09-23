@@ -1,9 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../providers/google_sign_in.dart';
 import '../login_screen.dart';
 import '../signup_screen.dart';
 import 'widgets/social_button.dart';

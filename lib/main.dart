@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
+import 'firebase_options.dart';
 import 'providers/google_sign_in.dart';
 import 'services/auth.dart';
 
@@ -13,7 +14,9 @@ import 'services/auth.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
