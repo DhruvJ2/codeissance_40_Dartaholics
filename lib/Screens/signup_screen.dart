@@ -1,6 +1,6 @@
+import 'package:dartaholics/Screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'Login.dart';
 
 class SignUp extends StatelessWidget {
   var _sizee;
