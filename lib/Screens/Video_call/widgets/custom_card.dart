@@ -89,7 +89,6 @@ class CustomCard extends StatelessWidget {
                 height: 5.0,
               ),
               Expanded(
-                flex: 1,
                 child: Container(
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 136, 37, 37),
@@ -110,13 +109,16 @@ class CustomCard extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(width: 10.0,),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                           Text(
                             'Speaker',
                             textAlign: TextAlign.center,
-                            
                             style: TextStyle(
-                              backgroundColor:Color.fromARGB(98, 213, 210, 210),                                color: Colors.white,
+                              backgroundColor:
+                                  Color.fromARGB(98, 213, 210, 210),
+                              color: Colors.white,
                               fontSize: 16.0,
                               fontWeight: FontWeight.w200,
                             ),

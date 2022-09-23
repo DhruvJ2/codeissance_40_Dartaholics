@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:dartaholics/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class Board extends StatelessWidget {
-  const Board({Key? key}) : super(key: key);
+  Board({Key? key}) : super(key: key);
 
+  AuthServices auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -19,6 +21,12 @@ class Board extends StatelessWidget {
               Stack(
                 children: <Widget>[
                   AppBar(
+                    leading: IconButton(
+                      icon: Icon(Icons.logout),
+                      onPressed: () async {
+                        await auth.signOut();
+                      },
+                    ),
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,

@@ -14,7 +14,7 @@ class Login extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
-        key:formkey,
+        key: formkey,
         child: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
@@ -33,7 +33,8 @@ class Login extends StatelessWidget {
                       child: Container(
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/light-1.png'))),
+                                image:
+                                    AssetImage('assets/images/light-1.png'))),
                       ),
                     ),
                     Positioned(
@@ -43,7 +44,8 @@ class Login extends StatelessWidget {
                       child: Container(
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/light-2.png'))),
+                                image:
+                                    AssetImage('assets/images/light-2.png'))),
                       ),
                     ),
                     Positioned(
@@ -104,7 +106,8 @@ class Login extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                   boxShadow: const [
                                     BoxShadow(
-                                        color: Color.fromRGBO(143, 148, 251, .2),
+                                        color:
+                                            Color.fromRGBO(143, 148, 251, .2),
                                         blurRadius: 20.0,
                                         offset: Offset(0, 10))
                                   ]),
@@ -114,8 +117,8 @@ class Login extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     decoration: const BoxDecoration(
                                         border: Border(
-                                            bottom:
-                                                BorderSide(color: Colors.grey))),
+                                            bottom: BorderSide(
+                                                color: Colors.grey))),
                                     child: TextFormField(
                                       controller: _email,
                                       validator: (value) => value!.isEmpty
@@ -124,8 +127,8 @@ class Login extends StatelessWidget {
                                       decoration: InputDecoration(
                                           border: InputBorder.none,
                                           hintText: "Email or Phone number",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey[400])),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400])),
                                     ),
                                   ),
                                   Container(
@@ -156,15 +159,16 @@ class Login extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                if(formkey.currentState!.validate()){
-                                  dynamic result = await auth.signInWithEmailAndPassword(_email.text, _password.text);
-                                  if(result == null ){
+                                if (formkey.currentState!.validate()) {
+                                  dynamic result =
+                                      await auth.signInWithEmailAndPassword(
+                                          _email.text, _password.text);
+                                  if (result == null) {
                                     error = "Not valid";
                                   }
-                                  Navigator.of(context).pushNamed('/home');
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home');
                                 }
-                                
-      
                               },
                               child: Container(
                                 alignment: Alignment.center,

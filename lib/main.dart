@@ -1,4 +1,8 @@
+import 'package:dartaholics/Screens/Dashboard.dart';
+import 'package:dartaholics/Screens/EventsDescriptionScreen/events_details.dart';
+import 'package:dartaholics/Screens/OnBoardingScreen/on_boarding.dart';
 import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
+import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -10,9 +14,7 @@ import 'firebase_options.dart';
 import 'providers/google_sign_in.dart';
 import 'services/auth.dart';
 
-
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -28,24 +30,25 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         StreamProvider.value(
-          value: AuthServices().user  ,
+          value: AuthServices().user,
           initialData: null,
         ),
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
-      child:MaterialApp(
-        initialRoute: '/custom-nav-drawer',
-      routes: {
-        '/': (context) => const VoiceCall(),
-        '/login':(context) => Login(),
-        '/sign-Up':(context) => SignUp(),
-        '/custom-nav-drawer' : (context) => const MainPage(),
-        // '/home': (context) =>
-        // '/event-timeline':(context) =>
-        // '/event-description': (context) =>
-        // '/voice-meetings':(context) => 
-        // '/user-list' :(context) => 
-      },),
+      child: MaterialApp(
+        routes: {
+          '/': (context) => const WelcomePage(),
+          '/welcome': (context) => const WelcomePage(),
+          '/login': (context) => Login(),
+          '/sign-Up': (context) => SignUp(),
+          '/custom-nav-drawer': (context) => const MainPage(),
+          '/home': (context) => Board(),
+          // '/event-timeline':(context) =>
+          // '/event-description': (context) =>
+          // '/voice-meetings':(context) =>
+          // '/user-list' :(context) =>
+        },
+      ),
     );
   }
 }
