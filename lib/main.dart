@@ -1,10 +1,7 @@
-import 'package:codestormhack/pages/Login.dart';
-import 'package:codestormhack/pages/SignUp.dart';
-import 'package:codestormhack/providers/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
+import 'providers/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
