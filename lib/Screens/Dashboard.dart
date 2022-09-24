@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
+import 'package:dartaholics/custom_navigation_bar/mydrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:dartaholics/models/news_data.dart';
 
@@ -24,6 +25,7 @@ class _BoardState extends State<Board> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Container(
