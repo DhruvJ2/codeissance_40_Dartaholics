@@ -42,8 +42,12 @@ dependencies:
   firebase_auth: ^3.10.0
   firebase_core: ^1.23.0
   flutter_webrtc: ^0.9.7
+  font_awesome_flutter: ^10.2.1
   http: ^0.13.5
   json_annotation: ^4.7.0
+  flutter_staggered_animations: ^1.1.1
+  liquid_swipe: ^3.0.0
+  velocity_x: ^3.5.1
 
 dev_dependencies:
   flutter_test:

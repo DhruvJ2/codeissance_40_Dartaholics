@@ -1,8 +1,36 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
-
+  CustomCard(this.index, {super.key});
+  int index;
+  final List<Color> color = [
+    Color.fromARGB(255, 30, 147, 231),
+    Color.fromARGB(255, 162, 46, 194),
+    Color.fromARGB(255, 32, 187, 172),
+    Color.fromARGB(255, 239, 75, 25),
+    Color.fromARGB(255, 230, 46, 114),
+  ];
+  List<Color> opacityColor = [
+    Color.fromARGB(255, 16, 111, 179),
+    Color.fromARGB(255, 137, 34, 166),
+    Color.fromARGB(255, 26, 160, 146),
+    Color.fromARGB(255, 210, 58, 11),
+    Color.fromARGB(255, 194, 35, 93),
+  ];
+  List description = [
+    '24/7 Totally Uninformed Opinions: NFTs Web3 Games Waking Up-ish #TUO',
+    'Doodles deepdive + NFT Flipping Masterclass + NFT Market Analysis',
+    'Apple Watch Ultra review: an aspirational debut',
+    'The Future of Crypto, SPACs, and Trump\'s legal Troubles',
+    'Emotion AI, Social Robots, and Self-Driving Cars',
+  ];
+  List category =[
+    'Gaming . Technology . NFTs',
+    'Technology . NFTs',
+    'Technology',
+    'Technology . Crypto',
+    'AI/ML . Technology . Cars',
+  ];
   @override
   Widget build(BuildContext context) {
     var _size = MediaQuery.of(context).size;
@@ -14,7 +42,7 @@ class CustomCard extends StatelessWidget {
           width: _size.width * 0.9,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            color: const Color.fromARGB(255, 175, 59, 59),
+            color: color[index],
           ),
           child: Column(
             children: [
@@ -35,20 +63,20 @@ class CustomCard extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.more_horiz),
+                      icon: const Icon(Icons.more_horiz,color: Colors.white,),
                     ),
                   ],
                 ),
               ),
-              const Padding(
-                padding: const EdgeInsets.only(
+              Padding(
+                padding: EdgeInsets.only(
                   left: 15.0,
                   bottom: 10.0,
                   top: 10.0,
                   right: 5.0,
                 ),
                 child: Text(
-                  '24/7 Totally Uninformed Opinions: NFTs Web3 Games Waking Up-ish #TUO',
+                  description[index],
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: Colors.white,
@@ -59,13 +87,13 @@ class CustomCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(
                   left: 10.0,
                   bottom: 5.0,
                 ),
                 child: Text(
-                  'Gaming . Technology . NFTs',
+                  category[index],
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: Colors.white,
@@ -91,8 +119,8 @@ class CustomCard extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 136, 37, 37),
+                  decoration: BoxDecoration(
+                    color: opacityColor[index],
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.circular(10.0),
                     ),
@@ -100,28 +128,37 @@ class CustomCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        children: const [
-                          Text(
-                            'EMS',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w400,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10.0,
+                          top: 10.0,
+                        ),
+                        child: Row(
+                          children: const [
+                            Text(
+                              'EMS',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 10.0,),
-                          Text(
-                            'Speaker',
-                            textAlign: TextAlign.center,
-                            
-                            style: TextStyle(
-                              backgroundColor:Color.fromARGB(98, 213, 210, 210),                                color: Colors.white,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w200,
+                            SizedBox(
+                              width: 10.0,
                             ),
-                          )
-                        ],
+                            Text(
+                              'Speaker',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                backgroundColor:
+                                    Color.fromARGB(98, 213, 210, 210),
+                                color: Colors.white,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w200,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),

@@ -1,4 +1,4 @@
-
+import 'package:dartaholics/Screens/Dashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../login_screen.dart';
@@ -10,7 +10,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
 
     return Scaffold(
         body: StreamBuilder<User?>(
@@ -21,7 +21,7 @@ class WelcomePage extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasData) {
-                return Login();
+                return Board();
               } else if (snapshot.hasError) {
                 return const Center(
                   child: Text('Something went Wrong'),
@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
                         Container(
                           height: size.height * 0.350,
                           decoration: const BoxDecoration(
-                              image:DecorationImage(
+                              image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/background.png'),
                                   fit: BoxFit.fill)),
@@ -111,17 +111,18 @@ class WelcomePage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(30, 20, 30, 15),
                           child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => SignUp()),
+                                MaterialPageRoute(
+                                    builder: (context) => SignUp()),
                               );
                             },
                             child: Container(
                               height: size.height * 0.075,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                               color:Color.fromRGBO(133, 148, 251, 1),
+                                color: Color.fromRGBO(133, 148, 251, 1),
                               ),
                               child: const Center(
                                 child: Text(
@@ -147,7 +148,7 @@ class WelcomePage extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  Login()),
+                              MaterialPageRoute(builder: (context) => Login()),
                             );
                           },
                           child: RichText(
@@ -164,7 +165,7 @@ class WelcomePage extends StatelessWidget {
                                 TextSpan(
                                   text: ' Sign In',
                                   style: TextStyle(
-                                    color:Color.fromRGBO(133, 148, 251, 1),
+                                    color: Color.fromRGBO(133, 148, 251, 1),
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600,
                                   ),
