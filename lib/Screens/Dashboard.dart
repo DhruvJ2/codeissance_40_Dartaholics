@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
+import 'package:dartaholics/custom_navigation_bar/mydrawer.dart';
 import 'package:flutter/material.dart';
 
 import '../models/news_data.dart';
@@ -38,6 +39,7 @@ class _BoardState extends State<Board> {
     }
 
     return Scaffold(
+      drawer: const MyDrawer(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(
@@ -48,7 +50,6 @@ class _BoardState extends State<Board> {
               Stack(
                 children: <Widget>[
                   AppBar(
-                    leading: DrawerMenuWidget(onClicked: widget.openDrawer),
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,
@@ -263,7 +264,7 @@ class _BoardState extends State<Board> {
                               itemCount: articles.length,
                               itemBuilder: (context, index) {
                                 return Container(
-                                  child: const MyList(),
+                                  child: MyList(index),
                                 );
                               }),
                     ),
@@ -276,11 +277,11 @@ class _BoardState extends State<Board> {
       ),
     );
   }
-
 }
 
 class MyList extends StatefulWidget {
-  const MyList({super.key});
+  final int index;
+  const MyList(this.index, {super.key});
 
   @override
   State<MyList> createState() => _MyListState();
@@ -345,7 +346,7 @@ class _MyListState extends State<MyList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        articles[0].title,
+                        articles[widget.index].title,
                         style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -353,9 +354,9 @@ class _MyListState extends State<MyList> {
                       ),
                       Container(
                         alignment: Alignment.bottomLeft,
-                        child:  Text(
-                          articles[0].description,
-                          style:const TextStyle(
+                        child: Text(
+                          articles[widget.index].description,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
                               fontSize: 16),
