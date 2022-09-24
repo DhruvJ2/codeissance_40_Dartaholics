@@ -1,12 +1,20 @@
 import 'dart:math';
 
+import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:dartaholics/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class Board extends StatelessWidget {
-  Board({Key? key}) : super(key: key);
+class Board extends StatefulWidget {
+  Board({Key? key, this.openDrawer}) : super(key: key);
+  final VoidCallback? openDrawer;
 
+  @override
+  State<Board> createState() => _BoardState();
+}
+
+class _BoardState extends State<Board> {
   AuthServices auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -21,12 +29,15 @@ class Board extends StatelessWidget {
               Stack(
                 children: <Widget>[
                   AppBar(
-                    leading: IconButton(
-                      icon: Icon(Icons.logout),
-                      onPressed: () async {
-                        await auth.signOut();
-                      },
-                    ),
+                    actions: [
+                      IconButton(
+                        onPressed: () async {
+                          await auth.signOut();
+                        },
+                        icon: Icon(Icons.logout),
+                      )
+                    ],
+                    leading: DrawerMenuWidget(onClicked: widget.openDrawer),
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,
@@ -317,16 +328,6 @@ class MyList extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
-                      Container(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                          'GitHub removes ban from Tornado\n Cash following OFAC guidance',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16),
-                        ),
-                      ),
                     ],
                   ),
                 )
@@ -379,6 +380,7 @@ class MyWidget extends StatelessWidget {
                     ),
                     child: Image(
                       height: 100,
+                      width: size1.width,
                       fit: BoxFit.cover,
                       image: AssetImage('assets/images/meetuptalk.jpg'),
                     ),
