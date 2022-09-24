@@ -1,12 +1,15 @@
-import 'dart:math';
+// ignore_for_file: avoid_unnecessary_containers
 
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
-import 'package:dartaholics/services/auth.dart';
 import 'package:flutter/material.dart';
 
+import '../models/news_data.dart';
+import '../services/auth.dart';
+import '../services/tech_news_service.dart';
+
 class Board extends StatefulWidget {
-  Board({Key? key, this.openDrawer}) : super(key: key);
   final VoidCallback? openDrawer;
+  const Board({Key? key, this.openDrawer}) : super(key: key);
 
   @override
   State<Board> createState() => _BoardState();
@@ -18,10 +21,29 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    bool _loading = false;
+
+    List<Article> articles = <Article>[];
+
+    getNews() async {
+      News newsClass = News();
+      await newsClass.getNews();
+      articles = newsClass.articles;
+      setState(() {
+        _loading = false;
+      });
+    }
+
+    @override
+    void initState() {
+      super.initState();
+      getNews();
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
+        physics: const BouncingScrollPhysics(),
+        child: SizedBox(
           height: size.height * 1.5,
           width: size.width,
           child: Column(
@@ -41,7 +63,7 @@ class _BoardState extends State<Board> {
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,
-                    backgroundColor: Color.fromRGBO(223, 211, 255, .6),
+                    backgroundColor: const Color.fromRGBO(223, 211, 255, .6),
                     flexibleSpace: ClipPath(
                       child: Container(
                         height: 300,
@@ -69,7 +91,7 @@ class _BoardState extends State<Board> {
                       child: Column(children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text(
+                          child: const Text(
                             'Find Designs Events',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -79,7 +101,7 @@ class _BoardState extends State<Board> {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text(
+                          child: const Text(
                             '124 Events in your town',
                             style: TextStyle(
                               color: Colors.white,
@@ -88,11 +110,11 @@ class _BoardState extends State<Board> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 13),
-                          child: Container(
+                          child: SizedBox(
                             height: 40,
                             child: TextFormField(
                               // textAlign: TextAlign.left,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.all(0),
                                 fillColor: Colors.white,
                                 filled: true,
@@ -122,7 +144,7 @@ class _BoardState extends State<Board> {
                         alignment: Alignment.centerLeft,
                         width: 10,
                         height: 70,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey,
@@ -143,7 +165,7 @@ class _BoardState extends State<Board> {
                           child: Row(
                             children: [
                               Column(
-                                children: [
+                                children: const [
                                   Text(
                                     'You have 2 events',
                                     style: TextStyle(
@@ -174,7 +196,7 @@ class _BoardState extends State<Board> {
                                             Colors.deepPurpleAccent,
                                       ),
                                       onPressed: () {},
-                                      child: Text(
+                                      child: const Text(
                                         'Check Status',
                                         style: TextStyle(
                                           fontSize: 10,
@@ -206,9 +228,9 @@ class _BoardState extends State<Board> {
                   ),
                   child: Column(children: [
                     Container(
-                      margin: EdgeInsets.only(left: 20, top: 20),
+                      margin: const EdgeInsets.only(left: 20, top: 20),
                       alignment: Alignment.topLeft,
-                      child: Text(
+                      child: const Text(
                         'Recommended Events',
                         style: TextStyle(
                           fontSize: 16,
@@ -216,22 +238,23 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: size.height * 0.3,
                       width: size.width,
                       child: ListView.builder(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           itemCount: 03,
                           itemBuilder: (context, index) {
-                            return Container(child: MyWidget());
+                            return Container(child: const MyWidget());
                           }),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+                      margin:
+                          const EdgeInsets.only(left: 20, top: 20, bottom: 20),
                       alignment: Alignment.topLeft,
-                      child: Text(
+                      child: const Text(
                         'Latest Tech Updates',
                         style: TextStyle(
                           fontSize: 16,
@@ -239,19 +262,21 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: size.height * 0.6,
                       width: size.width,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount: 05,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              child: MyList(),
-                            );
-                          }),
+                      child: _loading
+                          ? const Center(child: CircularProgressIndicator())
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              itemCount: articles.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  child: const MyList(),
+                                );
+                              }),
                     ),
                   ]),
                 ),
@@ -264,7 +289,15 @@ class _BoardState extends State<Board> {
   }
 }
 
-class MyList extends StatelessWidget {
+class MyList extends StatefulWidget {
+  const MyList({super.key});
+
+  @override
+  State<MyList> createState() => _MyListState();
+}
+
+class _MyListState extends State<MyList> {
+  List<Article> articles = <Article>[];
   @override
   Widget build(BuildContext context) {
     var size2 = MediaQuery.of(context).size;
@@ -275,7 +308,7 @@ class MyList extends StatelessWidget {
           alignment: Alignment.centerLeft,
           width: size2.width * 0.9,
           height: 150,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/meetuptalk.jpg'),
               fit: BoxFit.fill,
@@ -300,13 +333,13 @@ class MyList extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.bottomRight,
-                stops: [0.1, 0.9],
+                stops: const [0.1, 0.9],
                 colors: [
                   Colors.black.withOpacity(.8),
                   Colors.black.withOpacity(.1),
                 ],
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
                 bottomLeft: Radius.circular(20.0),
@@ -322,11 +355,21 @@ class MyList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'LeetCode is Hacked',
-                        style: TextStyle(
+                        articles[0].title,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          articles[0].description,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
@@ -348,12 +391,12 @@ class MyWidget extends StatelessWidget {
     var size1 = MediaQuery.of(context).size;
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 0, 20),
+        padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
         child: Container(
           alignment: Alignment.centerLeft,
           width: size1.width * 0.65,
           height: 150,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
@@ -386,9 +429,9 @@ class MyWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 8.0, top: 8.0),
+                    margin: const EdgeInsets.only(left: 8.0, top: 8.0),
                     alignment: Alignment.topLeft,
-                    child: Text('Remote Design Week',
+                    child: const Text('Remote Design Week',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -398,28 +441,28 @@ class MyWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.location_on,
                           color: Colors.black,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text('The Concert Hall',
+                          child: const Text('The Concert Hall',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.access_alarm,
                           color: Colors.black,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text('06:30',
+                          child: const Text('06:30',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
@@ -442,9 +485,9 @@ class MyWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     Container(
-                      margin: EdgeInsets.only(top: 5),
+                      margin: const EdgeInsets.only(top: 5),
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         '22',
                         style: TextStyle(
                             color: Colors.white,
@@ -452,7 +495,7 @@ class MyWidget extends StatelessWidget {
                             fontSize: 15),
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Feb',
                       style: TextStyle(
                           color: Colors.white,
@@ -485,7 +528,6 @@ class Customshape extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
     return false;
   }
 }

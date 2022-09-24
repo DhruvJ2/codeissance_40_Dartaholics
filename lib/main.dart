@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/Dashboard.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
 import 'custom_navigation_bar/custom_navigation_drawer.dart';
