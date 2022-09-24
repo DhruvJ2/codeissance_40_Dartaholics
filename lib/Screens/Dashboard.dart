@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_unnecessary_containers
+import 'dart:math';
 
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:dartaholics/custom_navigation_bar/mydrawer.dart';
 import 'package:flutter/material.dart';
+import 'package:dartaholics/models/news_data.dart';
 
 import '../models/news_data.dart';
 import '../services/auth.dart';
@@ -10,8 +11,8 @@ import '../services/tech_news_service.dart';
 
 class Board extends StatefulWidget {
   final VoidCallback? openDrawer;
-  const Board({Key? key, this.openDrawer}) : super(key: key);
 
+  const Board({super.key, this.openDrawer});
   @override
   State<Board> createState() => _BoardState();
 }
@@ -22,30 +23,12 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    bool _loading = false;
-
-    List<Article> articles = <Article>[];
-
-    getNews() async {
-      News newsClass = News();
-      await newsClass.getNews();
-      articles = newsClass.articles;
-      setState(() {
-        _loading = false;
-      });
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      getNews();
-    }
 
     return Scaffold(
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: SizedBox(
+        physics: BouncingScrollPhysics(),
+        child: Container(
           height: size.height * 1.5,
           width: size.width,
           child: Column(
@@ -65,7 +48,7 @@ class _BoardState extends State<Board> {
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,
-                    backgroundColor: const Color.fromRGBO(223, 211, 255, .6),
+                    backgroundColor: Color.fromRGBO(223, 211, 255, .6),
                     flexibleSpace: ClipPath(
                       child: Container(
                         height: 300,
@@ -93,7 +76,7 @@ class _BoardState extends State<Board> {
                       child: Column(children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Find Designs Events',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -103,7 +86,7 @@ class _BoardState extends State<Board> {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             '124 Events in your town',
                             style: TextStyle(
                               color: Colors.white,
@@ -112,11 +95,11 @@ class _BoardState extends State<Board> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 13),
-                          child: SizedBox(
+                          child: Container(
                             height: 40,
                             child: TextFormField(
                               // textAlign: TextAlign.left,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(0),
                                 fillColor: Colors.white,
                                 filled: true,
@@ -146,7 +129,7 @@ class _BoardState extends State<Board> {
                         alignment: Alignment.centerLeft,
                         width: 10,
                         height: 70,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey,
@@ -167,7 +150,7 @@ class _BoardState extends State<Board> {
                           child: Row(
                             children: [
                               Column(
-                                children: const [
+                                children: [
                                   Text(
                                     'You have 2 events',
                                     style: TextStyle(
@@ -198,7 +181,7 @@ class _BoardState extends State<Board> {
                                             Colors.deepPurpleAccent,
                                       ),
                                       onPressed: () {},
-                                      child: const Text(
+                                      child: Text(
                                         'Check Status',
                                         style: TextStyle(
                                           fontSize: 10,
@@ -211,7 +194,15 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  Positioned(
+                    top: 30,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: DrawerMenuWidget(onClicked: widget.openDrawer),
+                    ),
+                  ),
                 ],
               ),
               Expanded(
@@ -230,9 +221,9 @@ class _BoardState extends State<Board> {
                   ),
                   child: Column(children: [
                     Container(
-                      margin: const EdgeInsets.only(left: 20, top: 20),
+                      margin: EdgeInsets.only(left: 20, top: 20),
                       alignment: Alignment.topLeft,
-                      child: const Text(
+                      child: Text(
                         'Recommended Events',
                         style: TextStyle(
                           fontSize: 16,
@@ -240,23 +231,24 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       height: size.height * 0.3,
                       width: size.width,
                       child: ListView.builder(
                           shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
+                          physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           itemCount: 03,
                           itemBuilder: (context, index) {
-                            return Container(child: const MyWidget());
+                            return Container(
+                                child: MyWidget(
+                                    choice1: _itemsComponent1()[index]));
                           }),
                     ),
                     Container(
-                      margin:
-                          const EdgeInsets.only(left: 20, top: 20, bottom: 20),
+                      margin: EdgeInsets.only(left: 20, top: 20, bottom: 20),
                       alignment: Alignment.topLeft,
-                      child: const Text(
+                      child: Text(
                         'Latest Tech Updates',
                         style: TextStyle(
                           fontSize: 16,
@@ -264,21 +256,26 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: size.height * 0.6,
-                      width: size.width,
-                      child: _loading
-                          ? const Center(child: CircularProgressIndicator())
-                          : ListView.builder(
-                              shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              itemCount: articles.length,
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  child: MyList(index),
-                                );
-                              }),
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).pushReplacementNamed('/event-description');
+                      },
+
+                      
+                      child: Container(
+                        height: size.height * 0.6,
+                        width: size.width,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            itemCount: 05,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                child: MyList(choice: _itemsComponent()[index]),
+                              );
+                            }),
+                      ),
                     ),
                   ]),
                 ),
@@ -291,16 +288,49 @@ class _BoardState extends State<Board> {
   }
 }
 
-class MyList extends StatefulWidget {
-  final int index;
-  const MyList(this.index, {super.key});
+class Choice {
+  const Choice(
+      {required this.title, required this.image, required this.subtitle});
+  final String title;
+  final String subtitle;
 
-  @override
-  State<MyList> createState() => _MyListState();
+  final ImageProvider image;
 }
 
-class _MyListState extends State<MyList> {
+List<Choice> _itemsComponent() {
+  const List<Choice> choices = <Choice>[
+    Choice(
+        title: 'Tesla News',
+        image: AssetImage('assets/images/tesla.jfif'),
+        subtitle:
+            'Tesla recalls nearly 1.1 million US vehicles \n to update window reversing software'),
+    Choice(
+        title: 'Latest Cryptocurrency News',
+        image: AssetImage('assets/images/crypt.png'),
+        subtitle:
+            'Market Steadies After Fed Rate \n Hike; BTC Up 0.91%, XRP Soars 5%'),
+    Choice(
+        title: 'Fraud Alert',
+        image: AssetImage('assets/images/trojan.jfif'),
+        subtitle: 'Bank Customers Targeted by \n SOVA Android Trojan'),
+    Choice(
+        title: 'RealMe Watch3 Rro',
+        image: AssetImage('assets/images/realme.jpg'),
+        subtitle: 'Feature-packed smartwatch \n under Rs 5,000'),
+    Choice(
+        title: 'Cryptocurrency',
+        image: AssetImage('assets/images/feed3.jfif'),
+        subtitle: 'Will Feed3 Replace Ethereum \nAs The BIggest Altcoin '),
+  ];
+  return choices;
+}
+
+class MyList extends StatelessWidget {
+  MyList({Key? key, required this.choice}) : super(key: key);
+  final Choice choice;
+
   List<Article> articles = <Article>[];
+
   @override
   Widget build(BuildContext context) {
     var size2 = MediaQuery.of(context).size;
@@ -310,10 +340,10 @@ class _MyListState extends State<MyList> {
         child: Container(
           alignment: Alignment.centerLeft,
           width: size2.width * 0.9,
-          height: 150,
-          decoration: const BoxDecoration(
+          height: 250,
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/meetuptalk.jpg'),
+              image: choice.image,
               fit: BoxFit.fill,
             ),
             boxShadow: [
@@ -336,13 +366,13 @@ class _MyListState extends State<MyList> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.bottomRight,
-                stops: const [0.1, 0.9],
+                stops: [0.1, 0.9],
                 colors: [
                   Colors.black.withOpacity(.8),
                   Colors.black.withOpacity(.1),
                 ],
               ),
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
                 bottomLeft: Radius.circular(20.0),
@@ -352,14 +382,14 @@ class _MyListState extends State<MyList> {
             child: Stack(
               children: [
                 Positioned(
-                  top: 80,
+                  top: 180,
                   left: 10,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        articles[widget.index].title,
-                        style: const TextStyle(
+                        choice.title,
+                        style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
@@ -367,8 +397,8 @@ class _MyListState extends State<MyList> {
                       Container(
                         alignment: Alignment.bottomLeft,
                         child: Text(
-                          articles[widget.index].description,
-                          style: const TextStyle(
+                          choice.subtitle,
+                          style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
                               fontSize: 16),
@@ -386,20 +416,55 @@ class _MyListState extends State<MyList> {
   }
 }
 
+class Choice1 {
+  const Choice1(
+      {required this.title,
+      required this.image,
+      required this.location,
+      required this.time});
+  final String title;
+  final String location;
+  final String time;
+
+  final ImageProvider image;
+}
+
+List<Choice1> _itemsComponent1() {
+  const List<Choice1> choices = <Choice1>[
+    Choice1(
+        title: 'The Remote Design',
+        image: AssetImage('assets/images/meetuptalk.jpg'),
+        location: 'The Concert Hall',
+        time: '14:30'),
+    Choice1(
+        title: 'UI/UX Development',
+        image: AssetImage('assets/images/seddesh.jpg'),
+        location: 'University',
+        time: '18:30'),
+    Choice1(
+        title: 'Developers Club',
+        image: AssetImage('assets/images/develop.png'),
+        location: 'Online',
+        time: '10:30'),
+  ];
+  return choices;
+}
+
 class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+  MyWidget({Key? key, required this.choice1}) : super(key: key);
+  final Choice1 choice1;
 
   @override
   Widget build(BuildContext context) {
     var size1 = MediaQuery.of(context).size;
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
+        padding: EdgeInsets.fromLTRB(20, 20, 0, 20),
         child: Container(
           alignment: Alignment.centerLeft,
           width: size1.width * 0.65,
-          height: 150,
-          decoration: const BoxDecoration(
+          height: 200,
+          decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
@@ -424,17 +489,19 @@ class MyWidget extends StatelessWidget {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
-                    child: Image(
-                      height: 100,
-                      width: size1.width,
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/meetuptalk.jpg'),
+                    child: SizedBox(
+                      height: size1.height * 0.13,
+                      width: size1.width * 0.65,
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: choice1.image,
+                      ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 8.0, top: 8.0),
+                    margin: EdgeInsets.only(left: 8.0, top: 8.0),
                     alignment: Alignment.topLeft,
-                    child: const Text('Remote Design Week',
+                    child: Text(choice1.title,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -444,28 +511,28 @@ class MyWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.location_on,
                           color: Colors.black,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text('The Concert Hall',
+                          child: Text(choice1.location,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               )),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 30,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.access_alarm,
                           color: Colors.black,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text('06:30',
+                          child: Text(choice1.time,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
@@ -488,9 +555,9 @@ class MyWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 5),
+                      margin: EdgeInsets.only(top: 5),
                       alignment: Alignment.center,
-                      child: const Text(
+                      child: Text(
                         '22',
                         style: TextStyle(
                             color: Colors.white,
@@ -498,7 +565,7 @@ class MyWidget extends StatelessWidget {
                             fontSize: 15),
                       ),
                     ),
-                    const Text(
+                    Text(
                       'Feb',
                       style: TextStyle(
                           color: Colors.white,
@@ -531,6 +598,7 @@ class Customshape extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
     return false;
   }
 }

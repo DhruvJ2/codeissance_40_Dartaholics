@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">54606607022-t7i9qnhcfiq29isv11rrmubkmuhstsud.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">54606607022</string>
+    <string name="google_api_key" translatable="false">AIzaSyAhG5rBHWhD34fqgiYYPxFcIgPE-ucqxT4</string>
+    <string name="google_app_id" translatable="false">1:54606607022:android:dc09431449c152a907b33f</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAhG5rBHWhD34fqgiYYPxFcIgPE-ucqxT4</string>
+    <string name="google_storage_bucket" translatable="false">talkup-8aacd.appspot.com</string>
+    <string name="project_id" translatable="false">talkup-8aacd</string>
+</resources>

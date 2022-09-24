@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "54606607022",
+    "project_id": "talkup-8aacd",
+    "storage_bucket": "talkup-8aacd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54606607022:android:dc09431449c152a907b33f",
+        "android_client_info": {
+          "package_name": "com.example.dartaholics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54606607022-t7i9qnhcfiq29isv11rrmubkmuhstsud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhG5rBHWhD34fqgiYYPxFcIgPE-ucqxT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54606607022-t7i9qnhcfiq29isv11rrmubkmuhstsud.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "54606607022-279amfnrc6u80onkg59beojb5fui8u1r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dartaholics"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

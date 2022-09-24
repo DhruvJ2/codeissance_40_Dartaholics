@@ -4,6 +4,7 @@ import 'package:dartaholics/Screens/OnBoardingScreen/on_boarding.dart';
 import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
 import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:dartaholics/Screens/Dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

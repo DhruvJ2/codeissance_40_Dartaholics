@@ -44,6 +44,10 @@ dependencies:
   flutter_webrtc: ^0.9.7
   font_awesome_flutter: ^10.2.1
   flutter_svg: ^1.1.5
+  lottie: ^1.4.3
+  
+  
+
   liquid_swipe: ^3.0.0
   http: ^0.13.5
   json_annotation: ^4.7.0
@@ -51,8 +55,7 @@ dependencies:
   velocity_x: ^3.3.0
   animated_text_kit: ^4.2.2
   google_fonts: ^3.0.1
-  lottie: ^1.4.3
-
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +78,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
@@ -95,7 +99,6 @@ flutter:
   #   - family: Monument
   #     fonts:
   #       - asset: assets/fonts/Monument.otf
-  #       - asset: fonts/Monument_bold.otf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
