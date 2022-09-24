@@ -56,22 +56,25 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            const ListTile(
-              leading: Icon(
+            ListTile(
+              onTap: () {Navigator.of(context).pushNamed('/event-description');},
+              leading: const Icon(
                 FontAwesomeIcons.calendar,
                 color: Color.fromARGB(255, 164, 27, 210),
               ),
-              title: Text(
+              title: const Text(
                 "Event Timeline",
                 style: TextStyle(color: Color.fromARGB(255, 164, 27, 210)),
               ),
             ),
-            const ListTile(
-              leading: Icon(
+            ListTile(
+              onTap: () {Navigator.of(context).pushReplacementNamed('/voice-meetings');},
+
+              leading: const  Icon(
                 FontAwesomeIcons.microphone,
                 color: Color.fromARGB(255, 164, 27, 210),
               ),
-              title: Text(
+              title:const  Text(
                 "Voice Calling",
                 style: TextStyle(color: Color.fromARGB(255, 164, 27, 210)),
               ),
