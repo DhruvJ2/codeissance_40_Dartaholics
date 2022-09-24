@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:lottie/lottie.dart';
@@ -54,7 +55,8 @@ class _OnBoaringState extends State<OnBoarding> {
                   style: TextStyle(
                       color: Color.fromARGB(255, 0, 8, 166),
                       fontSize: 35,
-                      fontWeight: FontWeight.bold))
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Monument'))
             ],
           )
         ]),
@@ -65,7 +67,7 @@ class _OnBoaringState extends State<OnBoarding> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Padding(
             padding: EdgeInsets.only(bottom: 52),
-            child: Lottie.asset("assets/jsons/meet.json", width: 200),
+            child: Lottie.asset("assets/jsons/meet_3.json", width: 200),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,49 +90,40 @@ class _OnBoaringState extends State<OnBoarding> {
       ),
       Container(
         width: double.infinity,
-        color: Color.fromARGB(255, 238, 231, 231),
+        color: Color(0xf9f9f9),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 52),
-            child: Lottie.asset("assets/jsons/meet.json", width: 200),
+          Lottie.asset("assets/jsons/meet.json", width: 250, height: 250),
+          const Image(
+            image: AssetImage("assets/images/talk_up.png"),
+            width: 180,
+            height: 180,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("Sign Up Today",
-                  style: TextStyle(color: Colors.blue, fontSize: 25)),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 50, right: 50, bottom: 150),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "To ",
-                      style:
-                          TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-                    ),
-                    Lottie.asset("assets/jsons/rocket.json",
-                        repeat: true, width: 90, height: 90),
-                    Text(
-                      " your career",
-                      style:
-                          TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black)),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed("/welcome");
-                  },
-                  child: const Text(
-                    "Dive In",
-                    style: TextStyle(color: Colors.lightBlue),
-                  ))
-            ],
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: BoxDecoration(color: Color(0xf9f9f9)),
+              // ignore: sort_child_properties_last
+              child: Center(
+                  child: AnimatedTextKit(
+                animatedTexts: [
+                  // ignore: prefer_const_constructors
+                  FadeAnimatedText(
+                    "Attend",
+                    textStyle:
+                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  FadeAnimatedText(
+                    "Engage",
+                    textStyle: TextStyle(fontSize: 30),
+                  ),
+                  FadeAnimatedText("UpSkill",
+                      textStyle: TextStyle(fontSize: 30)),
+                  FadeAnimatedText("Grow", textStyle: TextStyle(fontSize: 30))
+                ],
+              )),
+              width: double.infinity,
+              height: 200,
+            ),
           )
         ]),
       ),

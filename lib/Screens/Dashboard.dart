@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:dartaholics/models/news_data.dart';
+
+import '../models/news_data.dart';
+import '../services/auth.dart';
 import '../services/tech_news_service.dart';
 
 class Board extends StatefulWidget {
@@ -14,6 +17,8 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
+  AuthServices auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -29,6 +34,15 @@ class _BoardState extends State<Board> {
               Stack(
                 children: <Widget>[
                   AppBar(
+                    actions: [
+                      IconButton(
+                        onPressed: () async {
+                          await auth.signOut();
+                        },
+                        icon: Icon(Icons.logout),
+                      )
+                    ],
+                    leading: DrawerMenuWidget(onClicked: widget.openDrawer),
                     toolbarHeight: 300,
                     elevation: 50,
                     shadowColor: Colors.white30,
@@ -242,7 +256,7 @@ class _BoardState extends State<Board> {
                     ),
                     InkWell(
                       onTap: (){
-                        Navigator.of(context).pushReplacementNamed()
+                        Navigator.of(context).pushReplacementNamed('/event-description');
                       },
 
                       

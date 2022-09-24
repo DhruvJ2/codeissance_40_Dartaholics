@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
 import '../../services/webrtc.dart';
@@ -41,11 +42,63 @@ class _VoiceCallState extends State<VoiceCall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.separated(
-        itemCount: 5,
-        separatorBuilder: (BuildContext context, int index) {
-          return Text('Dummy Text',textAlign: TextAlign.center,);
-        }, itemBuilder: (BuildContext context, int index) { return CustomCard(); },
+      backgroundColor: const Color.fromARGB(255, 223, 222, 241),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Center(
+          child: Text(
+            'Audio',
+            style: TextStyle(
+              color: Color.fromARGB(255, 9, 87, 164),
+              letterSpacing: 2.0,
+              wordSpacing: 2.0,
+            ),
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Color.fromARGB(255, 9, 87, 164),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      extendBodyBehindAppBar: true,
+      body: AnimationLimiter(
+        child: ListView.separated(
+          itemCount: 5,
+          separatorBuilder: (BuildContext context, int index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(seconds: 1),
+              child: const SlideAnimation(
+                verticalOffset: 44.0,
+                child: FadeInAnimation(
+                  child: Text(
+                    'Dummy Text',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            );
+          },
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (BuildContext context, int index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(seconds: 1),
+              child: SlideAnimation(
+                verticalOffset: 44.0,
+                child: FadeInAnimation(
+                  child: CustomCard(index),
+                ),
+              ),
+            );
+          },
+        ),
       ),
       // roomId = await signaling.createRoom(_remoteRenderer);
       // textEditingController.text = roomId!;

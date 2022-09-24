@@ -48,7 +48,7 @@ class SignUp extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(
                       top: 150, left: 20, right: 20, bottom: 0.0),
-                  height: 470,
+                  height: 500,
                   child: Positioned(
                     child: Container(
                       padding: const EdgeInsets.all(5),
@@ -152,37 +152,35 @@ class SignUp extends StatelessWidget {
                               const SizedBox(
                                 height: 30,
                               ),
-                              ElevatedButton(
-                                onPressed: () async {
-                                  if (formkey.currentState!.validate()) {
-                                    final result =
-                                        await auth.registerWithEmailAndPassword(
-                                            _email.text,
-                                            _password.text,
-                                            _username.text);
-                                    if (result == null) {
-                                      error = "Invalid Credentials";
+                              Container(
+                                width: size.width,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: ElevatedButton(
+                                  onPressed: () async {
+                                    if (formkey.currentState!.validate()) {
+                                      final result = await auth
+                                          .registerWithEmailAndPassword(
+                                              _email.text,
+                                              _password.text,
+                                              _username.text);
+                                      if (result == null) {
+                                        error = "Invalid Credentials";
+                                      }
+                                      Navigator.of(context)
+                                          .pushReplacementNamed('/');
                                     }
-                                    Navigator.of(context)
-                                        .pushReplacementNamed('/home');
-                                  }
-                                },
-                                child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        gradient: const LinearGradient(colors: [
-                                          Color.fromRGBO(143, 148, 251, 1),
-                                          Color.fromRGBO(143, 148, 251, .6),
-                                        ])),
-                                    child: const Center(
-                                      child: Text(
-                                        "SignUp",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )),
+                                  },
+                                  child: Text(
+                                    "SignUp",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.deepPurpleAccent,
+                                  ),
+                                ),
                               ),
                               const SizedBox(
                                 height: 15.0,
@@ -232,39 +230,6 @@ class SignUp extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/dark.png'))),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin:
-                        const EdgeInsets.only(top: 650, left: 80, right: 80),
-                    decoration: new BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                            height: 30.0,
-                            width: 30.0,
-                            child: const Image(
-                              image: AssetImage('assets/images/google.png'),
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            'Sign In With Google',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
                   ),
                 ),
               ],
