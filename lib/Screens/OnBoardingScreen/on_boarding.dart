@@ -53,10 +53,10 @@ class _OnBoaringState extends State<OnBoarding> {
               Text("Find", style: TextStyle(color: Colors.black, fontSize: 25)),
               Text("Inspiration",
                   style: TextStyle(
-                      color: Color.fromARGB(255, 0, 8, 166),
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Monument'))
+                    color: Color.fromARGB(255, 0, 8, 166),
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ))
             ],
           )
         ]),
@@ -124,6 +124,14 @@ class _OnBoaringState extends State<OnBoarding> {
               width: double.infinity,
               height: 200,
             ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/welcome');
+            },
+            child: Text('Get Started'),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurpleAccent),
           )
         ]),
       ),
