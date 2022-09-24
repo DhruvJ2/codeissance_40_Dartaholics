@@ -1,10 +1,14 @@
-import 'package:dartaholics/Screens/UserProfile/user_profile.dart';
+import 'package:dartaholics/Screens/Dashboard.dart';
+import 'package:dartaholics/Screens/EventsDescriptionScreen/events_details.dart';
+import 'package:dartaholics/Screens/OnBoardingScreen/on_boarding.dart';
 import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
+import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dartaholics/Screens/Dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/Dashboard.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
 import 'custom_navigation_bar/custom_navigation_drawer.dart';
@@ -34,12 +38,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
       child: MaterialApp(
-        initialRoute: '/',
+        initialRoute: '/dashboard',
         routes: {
-          '/': (context) => Board(),
+          '/': (context) => const VoiceCall(),
           '/login': (context) => Login(),
           '/sign-Up': (context) => SignUp(),
           '/custom-nav-drawer': (context) => const MainPage(),
+          '/dashboard': (context) => const Board(),
           // '/home': (context) =>
           // '/event-timeline':(context) =>
           // '/event-description': (context) =>

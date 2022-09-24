@@ -166,7 +166,8 @@ class Login extends StatelessWidget {
                                   if (result == null) {
                                     error = "Not valid";
                                   }
-                                  Navigator.of(context).pushNamed('/home');
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home');
                                 }
                               },
                               child: Container(

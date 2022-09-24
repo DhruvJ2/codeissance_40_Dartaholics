@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../services/auth.dart';
 
 class SignUp extends StatelessWidget {
-
   final formkey = GlobalKey<FormState>();
   final AuthServices auth = AuthServices();
 
@@ -100,7 +99,9 @@ class SignUp extends StatelessWidget {
                                                   color: Colors.grey))),
                                       child: TextFormField(
                                         controller: _email,
-                                        validator: (value) => value!.isEmpty ? "Username cannot be empty" : null,
+                                        validator: (value) => value!.isEmpty
+                                            ? "Username cannot be empty"
+                                            : null,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "Email or Phone number",
@@ -135,7 +136,9 @@ class SignUp extends StatelessWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: TextFormField(
                                         controller: _username,
-                                        validator: ((value) => value == "" ? "Please Enter valid Username" :null),
+                                        validator: ((value) => value == ""
+                                            ? "Please Enter valid Username"
+                                            : null),
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "Username",
@@ -151,14 +154,18 @@ class SignUp extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 onPressed: () async {
-                                  if(formkey.currentState!.validate()){
-                                    dynamic result = await auth.registerWithEmailAndPassword(_email.text, _password.text, _username.text);
-                                    if(result == null ){
+                                  if (formkey.currentState!.validate()) {
+                                    final result =
+                                        await auth.registerWithEmailAndPassword(
+                                            _email.text,
+                                            _password.text,
+                                            _username.text);
+                                    if (result == null) {
                                       error = "Invalid Credentials";
                                     }
-                                    Navigator.of(context).pushReplacementNamed('/home');
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home');
                                   }
-                                  
                                 },
                                 child: Container(
                                     height: 50,
@@ -182,11 +189,8 @@ class SignUp extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()),
-                                  );
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/login');
                                 },
                                 child: RichText(
                                   text: const TextSpan(
@@ -202,7 +206,8 @@ class SignUp extends StatelessWidget {
                                       TextSpan(
                                         text: ' Sign In',
                                         style: TextStyle(
-                                          color: Color.fromRGBO(133, 148, 251, 1),
+                                          color:
+                                              Color.fromRGBO(133, 148, 251, 1),
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -231,7 +236,8 @@ class SignUp extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    margin: const EdgeInsets.only(top: 650, left: 80, right: 80),
+                    margin:
+                        const EdgeInsets.only(top: 650, left: 80, right: 80),
                     decoration: new BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.rectangle,
