@@ -21,17 +21,17 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    closeDrawer();
+    openDrawer();
   }
 
-  void closeDrawer() => setState(() {
+  closeDrawer() => setState(() {
         xOffset = 0;
         yOffset = 0;
         scalefactor = 1;
         isDrawerOpen = false;
       });
 
-  void openDrawer() => setState(() {
+  openDrawer() => setState(() {
         xOffset = 230;
         yOffset = 150;
         scalefactor = 0.6;
@@ -44,7 +44,11 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Theme.of(context).primaryColor,
       body: Stack(
         children: [
-          buildDrawer(),
+          Positioned(
+            left: xOffset,
+            top: yOffset,
+            child: buildDrawer(),
+          ),
           buildPage(),
         ],
       ),
@@ -75,7 +79,7 @@ class _MainPageState extends State<MainPage> {
 
           isDragging = false;
         },
-        onTap: closeDrawer,
+        onTap: openDrawer,
         child: AnimatedContainer(
           duration: const Duration(
             milliseconds: 250,
