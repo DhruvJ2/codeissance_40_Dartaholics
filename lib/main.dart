@@ -5,6 +5,7 @@ import 'package:dartaholics/Screens/Video_call/voice_call_screen.dart';
 import 'package:dartaholics/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/Dashboard.dart';
@@ -36,20 +37,22 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
-      child:MaterialApp(
-        initialRoute: '/dashboard',
-      routes: {
-        '/': (context) => const VoiceCall(),
-        '/login':(context) => Login(),
-        '/sign-Up':(context) => SignUp(),
-        '/custom-nav-drawer' : (context) => const MainPage(),
-        '/dashboard' : (context) => const Board(),
-        // '/home': (context) =>
-        // '/event-timeline':(context) =>
-        // '/event-description': (context) =>
-        // '/voice-meetings':(context) => 
-        // '/user-list' :(context) => 
-      },),
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: GoogleFonts.poppins().fontFamily,
+        ),
+        routes: {
+          '/': (context) => OnBoarding(),
+          '/welcome': (context) => const WelcomePage(),
+          '/login': (context) => Login(),
+          '/sign-Up': (context) => SignUp(),
+          '/custom-nav-drawer': (context) => const MainPage(),
+          '/home': (context) => Board(),
+          '/event-description': (context) => EventsDetail(),
+          '/voice-meetings': (context) => VoiceCall(),
+          // '/user-list' :(context) =>
+        },
+      ),
     );
   }
 }

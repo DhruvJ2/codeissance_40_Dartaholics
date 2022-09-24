@@ -4,6 +4,7 @@ import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../models/news_data.dart';
+import '../services/auth.dart';
 import '../services/tech_news_service.dart';
 
 class Board extends StatefulWidget {
@@ -15,6 +16,8 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
+  AuthServices auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -48,6 +51,14 @@ class _BoardState extends State<Board> {
               Stack(
                 children: <Widget>[
                   AppBar(
+                    actions: [
+                      IconButton(
+                        onPressed: () async {
+                          await auth.signOut();
+                        },
+                        icon: Icon(Icons.logout),
+                      )
+                    ],
                     leading: DrawerMenuWidget(onClicked: widget.openDrawer),
                     toolbarHeight: 300,
                     elevation: 50,
@@ -276,7 +287,6 @@ class _BoardState extends State<Board> {
       ),
     );
   }
-
 }
 
 class MyList extends StatefulWidget {
@@ -353,9 +363,9 @@ class _MyListState extends State<MyList> {
                       ),
                       Container(
                         alignment: Alignment.bottomLeft,
-                        child:  Text(
+                        child: Text(
                           articles[0].description,
-                          style:const TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
                               fontSize: 16),
@@ -406,13 +416,14 @@ class MyWidget extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  const ClipRRect(
+                  ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
                     child: Image(
                       height: 100,
+                      width: size1.width,
                       fit: BoxFit.cover,
                       image: AssetImage('assets/images/meetuptalk.jpg'),
                     ),
