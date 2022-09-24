@@ -158,19 +158,19 @@ class SignUp extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: ElevatedButton(
                                   onPressed: () async {
-                                    if (formkey.currentState!.validate()) {
-                                      final result = await auth
-                                          .registerWithEmailAndPassword(
-                                              _email.text,
-                                              _password.text,
-                                              _username.text);
-                                      if (result == null) {
-                                        error = "Invalid Credentials";
-                                      }
-                                      Navigator.of(context)
-                                          .pushReplacementNamed('/');
-                                    }
+                                    // if (formkey.currentState!.validate()) {
+                                    // final result = await auth
+                                    //     .registerWithEmailAndPassword(
+                                    //         _email.text,
+                                    //         _password.text,
+                                    //         _username.text);
+                                    // if (result == null) {
+                                    //   error = "Invalid Credentials";
+                                    // }
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home');
                                   },
+                                  // },
                                   child: Text(
                                     "SignUp",
                                     style: TextStyle(
