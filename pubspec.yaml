@@ -83,7 +83,6 @@ flutter:
   assets:
     - assets/images/
     - assets/jsons/
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -100,7 +99,6 @@ flutter:
   #   - family: Monument
   #     fonts:
   #       - asset: assets/fonts/Monument.otf
-        
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
