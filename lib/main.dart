@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           '/sign-Up': (context) => SignUp(),
           '/custom-nav-drawer': (context) => const MainPage(),
           '/home': (context) => Board(),
-          '/event-description': (context) => EventsDetail(),
+          '/event-description': (context) => const EventsDetail(),
           '/voice-meetings': (context) => VoiceCall(),
           // '/user-list' :(context) =>
         },
