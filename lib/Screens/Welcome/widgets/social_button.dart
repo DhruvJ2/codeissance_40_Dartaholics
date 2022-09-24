@@ -53,34 +53,23 @@ Widget socialBtn(void Function() onTap, AssetImage image) {
   );
 }
 
-
-  Widget socialBtnRow(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 28.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            socialBtn(
-                  () => {},
-              const AssetImage(
-                'assets/images/twitter.png',
-              ),
-            ),
-            const SizedBox(
-              width: 30,
-            ),
-            socialBtn(
-                  () {
-                final provider =
+Widget socialBtnRow(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 28.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        socialBtn(
+          () {
+            final provider =
                 Provider.of<GoogleSignInProvider>(context, listen: false);
-                provider.googleLogin();
-              },
-              const AssetImage(
-                'assets/images/google.png',
-              ),
-            ),
-          ],
+            provider.googleLogin();
+          },
+          const AssetImage(
+            'assets/images/google.png',
+          ),
         ),
-
-    );
-  }
+      ],
+    ),
+  );
+}

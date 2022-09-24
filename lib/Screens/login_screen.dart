@@ -11,6 +11,7 @@ class Login extends StatelessWidget {
   Login({super.key});
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
@@ -19,7 +20,7 @@ class Login extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Container(
-                height: 380,
+                height: 420,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/background.png'),
@@ -81,7 +82,7 @@ class Login extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(
                     top: 280, left: 20, right: 20, bottom: 0.0),
-                height: 330,
+                height: 380,
                 child: Positioned(
                   child: Container(
                     padding: const EdgeInsets.all(5),
@@ -134,6 +135,7 @@ class Login extends StatelessWidget {
                                   Container(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
+                                      obscureText: true,
                                       controller: _password,
                                       validator: (value) {
                                         if (value!.isEmpty) {
@@ -157,28 +159,27 @@ class Login extends StatelessWidget {
                             const SizedBox(
                               height: 30,
                             ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (formkey.currentState!.validate()) {
-                                  dynamic result =
-                                      await auth.signInWithEmailAndPassword(
-                                          _email.text, _password.text);
-                                  if (result == null) {
-                                    error = "Not valid";
+                            Container(
+                              width: size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  if (formkey.currentState!.validate()) {
+                                    dynamic result =
+                                        await auth.signInWithEmailAndPassword(
+                                            _email.text, _password.text);
+                                    if (result == null) {
+                                      error = "Not valid";
+                                    }
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home');
                                   }
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home');
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: const LinearGradient(colors: [
-                                      Color.fromRGBO(143, 148, 251, 1),
-                                      Color.fromRGBO(143, 148, 251, .6),
-                                    ])),
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.deepPurpleAccent,
+                                ),
                                 child: const Text(
                                   "Login",
                                   style: TextStyle(
@@ -203,38 +204,6 @@ class Login extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 650, left: 80, right: 80),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Row(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: SizedBox(
-                          height: 30.0,
-                          width: 30.0,
-                          child: Image(
-                            image: AssetImage('assets/images/google.png'),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          'Sign In With Google',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ),

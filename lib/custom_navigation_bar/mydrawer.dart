@@ -31,26 +31,26 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 FontAwesomeIcons.houseChimney,
                 color: Color.fromARGB(255, 164, 27, 210),
               ),
               title: GestureDetector(
                 onTap: () {Navigator.of(context).pushReplacementNamed('/home');},
-                child: Text(
+                child:const  Text(
                   "Home",
                   style: TextStyle(color: Color.fromARGB(255, 164, 27, 210)),
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 FontAwesomeIcons.user,
                 color: Color.fromARGB(255, 164, 27, 210),
               ),
               title: GestureDetector(
                 onTap: () {Navigator.of(context).pushReplacementNamed('/');},
-                child: Text(
+                child:const  Text(
                   "Profile",
                   style: TextStyle(color: Color.fromARGB(255, 164, 27, 210)),
                 ),
