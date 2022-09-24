@@ -224,7 +224,9 @@ class _BoardState extends State<Board> {
                           scrollDirection: Axis.horizontal,
                           itemCount: 03,
                           itemBuilder: (context, index) {
-                            return Container(child: MyWidget());
+                            return Container(
+                                child: MyWidget(
+                                    choice1: _itemsComponent1()[index]));
                           }),
                     ),
                     Container(
@@ -238,19 +240,26 @@ class _BoardState extends State<Board> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: size.height * 0.6,
-                      width: size.width,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount: 05,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              child: MyList(index: index),
-                            );
-                          }),
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).pushReplacementNamed()
+                      },
+
+                      
+                      child: Container(
+                        height: size.height * 0.6,
+                        width: size.width,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            itemCount: 05,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                child: MyList(choice: _itemsComponent()[index]),
+                              );
+                            }),
+                      ),
                     ),
                   ]),
                 ),
@@ -263,16 +272,49 @@ class _BoardState extends State<Board> {
   }
 }
 
-class MyList extends StatefulWidget {
-  final int index;
-  const MyList({Key? key, required this.index}) : super(key: key);
+class Choice {
+  const Choice(
+      {required this.title, required this.image, required this.subtitle});
+  final String title;
+  final String subtitle;
 
-  @override
-  State<MyList> createState() => _MyListState();
+  final ImageProvider image;
 }
 
-class _MyListState extends State<MyList> {
+List<Choice> _itemsComponent() {
+  const List<Choice> choices = <Choice>[
+    Choice(
+        title: 'Tesla News',
+        image: AssetImage('assets/images/tesla.jfif'),
+        subtitle:
+            'Tesla recalls nearly 1.1 million US vehicles \n to update window reversing software'),
+    Choice(
+        title: 'Latest Cryptocurrency News',
+        image: AssetImage('assets/images/crypt.png'),
+        subtitle:
+            'Market Steadies After Fed Rate \n Hike; BTC Up 0.91%, XRP Soars 5%'),
+    Choice(
+        title: 'Fraud Alert',
+        image: AssetImage('assets/images/trojan.jfif'),
+        subtitle: 'Bank Customers Targeted by \n SOVA Android Trojan'),
+    Choice(
+        title: 'RealMe Watch3 Rro',
+        image: AssetImage('assets/images/realme.jpg'),
+        subtitle: 'Feature-packed smartwatch \n under Rs 5,000'),
+    Choice(
+        title: 'Cryptocurrency',
+        image: AssetImage('assets/images/feed3.jfif'),
+        subtitle: 'Will Feed3 Replace Ethereum \nAs The BIggest Altcoin '),
+  ];
+  return choices;
+}
+
+class MyList extends StatelessWidget {
+  MyList({Key? key, required this.choice}) : super(key: key);
+  final Choice choice;
+
   List<Article> articles = <Article>[];
+
   @override
   Widget build(BuildContext context) {
     var size2 = MediaQuery.of(context).size;
@@ -282,10 +324,10 @@ class _MyListState extends State<MyList> {
         child: Container(
           alignment: Alignment.centerLeft,
           width: size2.width * 0.9,
-          height: 150,
+          height: 250,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/meetuptalk.jpg'),
+              image: choice.image,
               fit: BoxFit.fill,
             ),
             boxShadow: [
@@ -324,13 +366,13 @@ class _MyListState extends State<MyList> {
             child: Stack(
               children: [
                 Positioned(
-                  top: 80,
+                  top: 180,
                   left: 10,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'LeetCode is Hacked',
+                        choice.title,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -339,7 +381,7 @@ class _MyListState extends State<MyList> {
                       Container(
                         alignment: Alignment.bottomLeft,
                         child: Text(
-                          'GitHub removes ban from Tornado\n Cash following OFAC guidance',
+                          choice.subtitle,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
@@ -358,8 +400,43 @@ class _MyListState extends State<MyList> {
   }
 }
 
+class Choice1 {
+  const Choice1(
+      {required this.title,
+      required this.image,
+      required this.location,
+      required this.time});
+  final String title;
+  final String location;
+  final String time;
+
+  final ImageProvider image;
+}
+
+List<Choice1> _itemsComponent1() {
+  const List<Choice1> choices = <Choice1>[
+    Choice1(
+        title: 'The Remote Design',
+        image: AssetImage('assets/images/meetuptalk.jpg'),
+        location: 'The Concert Hall',
+        time: '14:30'),
+    Choice1(
+        title: 'UI/UX Development',
+        image: AssetImage('assets/images/seddesh.jpg'),
+        location: 'University',
+        time: '18:30'),
+    Choice1(
+        title: 'Developers Club',
+        image: AssetImage('assets/images/develop.png'),
+        location: 'Online',
+        time: '10:30'),
+  ];
+  return choices;
+}
+
 class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+  MyWidget({Key? key, required this.choice1}) : super(key: key);
+  final Choice1 choice1;
 
   @override
   Widget build(BuildContext context) {
@@ -370,7 +447,7 @@ class MyWidget extends StatelessWidget {
         child: Container(
           alignment: Alignment.centerLeft,
           width: size1.width * 0.65,
-          height: 150,
+          height: 200,
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -396,16 +473,19 @@ class MyWidget extends StatelessWidget {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
-                    child: Image(
-                      height: 100,
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/meetuptalk.jpg'),
+                    child: SizedBox(
+                      height: size1.height * 0.13,
+                      width: size1.width * 0.65,
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: choice1.image,
+                      ),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 8.0, top: 8.0),
                     alignment: Alignment.topLeft,
-                    child: Text('Remote Design Week',
+                    child: Text(choice1.title,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -421,7 +501,7 @@ class MyWidget extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text('The Concert Hall',
+                          child: Text(choice1.location,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
@@ -436,7 +516,7 @@ class MyWidget extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text('06:30',
+                          child: Text(choice1.time,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
