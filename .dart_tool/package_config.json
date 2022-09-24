@@ -8,6 +8,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "auto_size_text_pk",
+      "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/auto_size_text_pk-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0",
       "packageUri": "lib/",
@@ -142,6 +148,12 @@
     {
       "name": "flutter_webrtc",
       "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webrtc-0.9.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -356,6 +368,18 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "velocity_x",
+      "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/velocity_x-3.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "vxstate",
+      "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vxstate-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "webrtc_interface",
       "rootUri": "file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webrtc_interface-1.0.8",
       "packageUri": "lib/",
@@ -380,7 +404,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-09-23T19:28:18.247753Z",
+  "generated": "2022-09-23T22:11:40.698105Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

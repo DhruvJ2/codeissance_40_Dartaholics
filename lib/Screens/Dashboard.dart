@@ -1,13 +1,21 @@
 import 'dart:math';
 
+import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:flutter/material.dart';
 
-class Board extends StatelessWidget {
-  const Board({Key? key}) : super(key: key);
+class Board extends StatefulWidget {
+  final VoidCallback? openDrawer;
 
+  const Board({super.key, this.openDrawer});
+  @override
+  State<Board> createState() => _BoardState();
+}
+
+class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -168,7 +176,15 @@ class Board extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  Positioned(
+                    top: 30,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: DrawerMenuWidget(onClicked: widget.openDrawer),
+                    ),
+                  ),
                 ],
               ),
               Expanded(
@@ -245,7 +261,14 @@ class Board extends StatelessWidget {
   }
 }
 
-class MyList extends StatelessWidget {
+class MyList extends StatefulWidget {
+  const MyList({Key? key}) : super(key: key);
+
+  @override
+  State<MyList> createState() => _MyListState();
+}
+
+class _MyListState extends State<MyList> {
   @override
   Widget build(BuildContext context) {
     var size2 = MediaQuery.of(context).size;

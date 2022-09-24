@@ -6,6 +6,10 @@ async
 2.14
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/lib/
+auto_size_text_pk
+2.12
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/auto_size_text_pk-3.0.0/
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/auto_size_text_pk-3.0.0/lib/
 boolean_selector
 2.12
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/
@@ -86,6 +90,10 @@ flutter_webrtc
 2.12
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webrtc-0.9.7/
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webrtc-0.9.7/lib/
+font_awesome_flutter
+2.12
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1/
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1/lib/
 google_sign_in
 2.14
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.4.2/
@@ -222,6 +230,14 @@ vector_math
 2.14
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/lib/
+velocity_x
+2.12
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/velocity_x-3.5.1/
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/velocity_x-3.5.1/lib/
+vxstate
+2.12
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vxstate-2.2.0/
+file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vxstate-2.2.0/lib/
 webrtc_interface
 2.12
 file:///C:/src/flutter_windows_3.0.2-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webrtc_interface-1.0.8/

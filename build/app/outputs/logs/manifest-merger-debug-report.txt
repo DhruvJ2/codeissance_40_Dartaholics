@@ -46,6 +46,8 @@ MERGED from C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\androi
 MERGED from [:firebase_auth] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:cloud_firestore] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:flutter_webrtc] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\flutter_webrtc\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:google_sign_in_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Hp\.gradle\caches\transforms-3\21b26ef90e71324700151bde7e8603b7\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Hp\.gradle\caches\transforms-3\e1f53c96aa78f7b42431169b7cd59214\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
@@ -54,6 +56,7 @@ MERGED from [com.google.firebase:firebase-firestore:24.3.1] C:\Users\Hp\.gradle\
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Hp\.gradle\caches\transforms-3\730b76b55745f22bcf8606cd8a0c1a1e\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.2] C:\Users\Hp\.gradle\caches\transforms-3\0ff5c642a9ec4fd1bc11a9a8d1d4ddd5\transformed\jetified-firebase-appcheck-interop-16.0.2\AndroidManifest.xml:15:1-26:12
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\caches\transforms-3\3b375b838d2a06401b054f2bb0469829\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:15:1-40:12
+MERGED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:2:1-15:12
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\Hp\.gradle\caches\transforms-3\c08e1e3d39e1a6bb423f464306ae8a05\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\Hp\.gradle\caches\transforms-3\a0eff2278a6bfc36fddc77064e3c80f4\transformed\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] C:\Users\Hp\.gradle\caches\transforms-3\c380200b164e99d6f2839c5af20a6fcc\transformed\jetified-play-services-auth-base-18.0.1\AndroidManifest.xml:2:1-7:12
@@ -80,6 +83,7 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Hp\.gradle\caches\t
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Hp\.gradle\caches\transforms-3\16d334c486cbdec77958d3d22ef782e4\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\1942d12b33ce7a51a3319b734272dc26\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Hp\.gradle\caches\transforms-3\bb86a14d026a27f02ef3281a7e476e26\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.webrtc-sdk:android:104.5112.01] C:\Users\Hp\.gradle\caches\transforms-3\5a54d144e64dae7a20420f43c79e2b3d\transformed\jetified-android-104.5112.01\AndroidManifest.xml:11:1-14:12
 MERGED from [io.grpc:grpc-android:1.48.1] C:\Users\Hp\.gradle\caches\transforms-3\9f5c44066b81f74087859d9d450d4652\transformed\jetified-grpc-android-1.48.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Hp\.gradle\caches\transforms-3\4de47c5ddd4d546d00b4f491da6a160d\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Hp\.gradle\caches\transforms-3\7b0449fa7552e8a8a339afd91dd38861\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -110,6 +114,10 @@ MERGED from [:cloud_firestore] C:\Users\Hp\Downloads\okcar-master\codeissance_40
 MERGED from [:cloud_firestore] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_webrtc] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\flutter_webrtc\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_webrtc] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\flutter_webrtc\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:google_sign_in_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:google_sign_in_android] C:\Users\Hp\Downloads\okcar-master\codeissance_40_Dartaholics\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Hp\.gradle\caches\transforms-3\21b26ef90e71324700151bde7e8603b7\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
@@ -126,6 +134,8 @@ MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.2] C:\Users\Hp\.
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.2] C:\Users\Hp\.gradle\caches\transforms-3\0ff5c642a9ec4fd1bc11a9a8d1d4ddd5\transformed\jetified-firebase-appcheck-interop-16.0.2\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\caches\transforms-3\3b375b838d2a06401b054f2bb0469829\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\caches\transforms-3\3b375b838d2a06401b054f2bb0469829\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:20:5-22:41
+MERGED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\Hp\.gradle\caches\transforms-3\c08e1e3d39e1a6bb423f464306ae8a05\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\Hp\.gradle\caches\transforms-3\c08e1e3d39e1a6bb423f464306ae8a05\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\Hp\.gradle\caches\transforms-3\a0eff2278a6bfc36fddc77064e3c80f4\transformed\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:5:5-44
@@ -178,6 +188,8 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Hp\.gradle\cache
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Hp\.gradle\caches\transforms-3\1942d12b33ce7a51a3319b734272dc26\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Hp\.gradle\caches\transforms-3\bb86a14d026a27f02ef3281a7e476e26\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Hp\.gradle\caches\transforms-3\bb86a14d026a27f02ef3281a7e476e26\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.webrtc-sdk:android:104.5112.01] C:\Users\Hp\.gradle\caches\transforms-3\5a54d144e64dae7a20420f43c79e2b3d\transformed\jetified-android-104.5112.01\AndroidManifest.xml:13:3-72
+MERGED from [com.github.webrtc-sdk:android:104.5112.01] C:\Users\Hp\.gradle\caches\transforms-3\5a54d144e64dae7a20420f43c79e2b3d\transformed\jetified-android-104.5112.01\AndroidManifest.xml:13:3-72
 MERGED from [io.grpc:grpc-android:1.48.1] C:\Users\Hp\.gradle\caches\transforms-3\9f5c44066b81f74087859d9d450d4652\transformed\jetified-grpc-android-1.48.1\AndroidManifest.xml:5:5-7:41
 MERGED from [io.grpc:grpc-android:1.48.1] C:\Users\Hp\.gradle\caches\transforms-3\9f5c44066b81f74087859d9d450d4652\transformed\jetified-grpc-android-1.48.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Hp\.gradle\caches\transforms-3\4de47c5ddd4d546d00b4f491da6a160d\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
@@ -332,6 +344,20 @@ ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\cach
 		ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\caches\transforms-3\3b375b838d2a06401b054f2bb0469829\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
 	android:name
 		ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\Hp\.gradle\caches\transforms-3\3b375b838d2a06401b054f2bb0469829\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
+uses-permission#android.permission.BLUETOOTH
+ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:9:5-11:38
+	android:maxSdkVersion
+		ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:11:9-35
+	android:name
+		ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:10:9-52
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:12:22-73
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from [com.twilio:audioswitch:1.1.5] C:\Users\Hp\.gradle\caches\transforms-3\cad6c390e3ac534a90247bdc463d7455\transformed\jetified-audioswitch-1.1.5\AndroidManifest.xml:13:22-77
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\Hp\.gradle\caches\transforms-3\c08e1e3d39e1a6bb423f464306ae8a05\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents
