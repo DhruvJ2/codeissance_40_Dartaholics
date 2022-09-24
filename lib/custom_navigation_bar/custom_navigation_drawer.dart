@@ -1,7 +1,7 @@
+import 'package:dartaholics/Screens/Dashboard.dart';
 import 'package:flutter/material.dart';
 
 import 'drawer_widget.dart';
-import 'home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -90,7 +90,7 @@ class _MainPageState extends State<MainPage> {
                 color: isDrawerOpen
                     ? Colors.white12
                     : Theme.of(context).primaryColor,
-                child: HomePage(
+                child: Board(
                   openDrawer: openDrawer,
                 ),
               ),

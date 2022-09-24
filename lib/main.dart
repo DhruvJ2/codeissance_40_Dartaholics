@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/Dashboard.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/signup_screen.dart';
 import 'custom_navigation_bar/custom_navigation_drawer.dart';
@@ -34,12 +35,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
       child:MaterialApp(
-        initialRoute: '/custom-nav-drawer',
+        initialRoute: '/dashboard',
       routes: {
         '/': (context) => const VoiceCall(),
         '/login':(context) => Login(),
         '/sign-Up':(context) => SignUp(),
         '/custom-nav-drawer' : (context) => const MainPage(),
+        '/dashboard' : (context) => const Board(),
         // '/home': (context) =>
         // '/event-timeline':(context) =>
         // '/event-description': (context) =>
