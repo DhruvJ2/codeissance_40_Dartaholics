@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:dartaholics/custom_navigation_bar/drawer_menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:dartaholics/models/news_data.dart';
+import '../services/tech_news_service.dart';
 
 class Board extends StatefulWidget {
   final VoidCallback? openDrawer;
@@ -246,7 +248,7 @@ class _BoardState extends State<Board> {
                           itemCount: 05,
                           itemBuilder: (context, index) {
                             return Container(
-                              child: MyList(),
+                              child: MyList(index: index),
                             );
                           }),
                     ),
@@ -262,13 +264,15 @@ class _BoardState extends State<Board> {
 }
 
 class MyList extends StatefulWidget {
-  const MyList({Key? key}) : super(key: key);
+  final int index;
+  const MyList({Key? key, required this.index}) : super(key: key);
 
   @override
   State<MyList> createState() => _MyListState();
 }
 
 class _MyListState extends State<MyList> {
+  List<Article> articles = <Article>[];
   @override
   Widget build(BuildContext context) {
     var size2 = MediaQuery.of(context).size;
